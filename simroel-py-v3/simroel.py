@@ -1,23 +1,26 @@
 import pandas as pd
 import os
-from core.simulation import Simulation
 import json
 import time
+from core.simulation import Simulation
 
+# Configuração do caminho relativo
+base_dir = os.path.dirname(os.path.abspath(__file__))
+params_path = os.path.join(base_dir, 'data', 'parameters.json')
 
 total = pd.DataFrame()
-# loads = [60, 100, 140, 180, 220, 260]
-loads = [600, 800, 1000, 1200, 1400] #transformar isso em parametro
-n_repeat = 2
+loads = [600, 800, 1000]
+n_repeat = 1
 n_total = len(loads)*n_repeat
 simu = 1
+
 for erlang in loads:
-    with open('/home/backu/Downloads/simroelfix/parameters.json', 'r+') as f: #mudar diretorio de maneira exata
+    with open(params_path, 'r+') as f:
         data = json.load(f)
-        data['traffic_lambda'] = 1/erlang # <--- add id value.
-        f.seek(0)        # <--- should reset file position to the beginning.
+        data['traffic_lambda'] = 1/erlang
+        f.seek(0)
         json.dump(data, f, indent=4)
-        f.truncate()     # remove remaining part
+        f.truncate()
 
     for i in range(n_repeat):
         inicio = time.time()
@@ -30,24 +33,11 @@ for erlang in loads:
         simu += 1
         fim = time.time()
         print(fim - inicio)
-path = os.getcwd()
-path = path.split(os.sep)[:-1]
-path = os.sep.join(path)
-path = path + os.sep+'Result'
+
+# Caminho relativo para a pasta de resultados
+results_dir = os.path.join(base_dir, 'Result')
+os.makedirs(results_dir, exist_ok=True)  # Garante que a pasta existe
+output_path = os.path.join(results_dir, 'new_FF_est2.csv')
+
 print(total)
-total.to_csv(path + os.sep + 'new_FF_est2.csv', index=False)
-
-
-# import cProfile, pstats, io
-# from pstats import SortKey
-# pr = cProfile.Profile()
-# pr.enable()
-# sim = Simulation()
-# sim.simulate(1, 1)
-# pr.disable()
-# s = io.StringIO()
-# sortby = SortKey.CUMULATIVE
-# ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
-# ps.print_stats()
-# print(s.getvalue())
-# sim.stats.summarize()
+total.to_csv(output_path, index=False)
