@@ -10,8 +10,8 @@ params_path = os.path.join(base_dir, 'data', 'parameters.json')
 
 total = pd.DataFrame()
 # loads = [60, 100, 140, 180, 220, 260]
-loads = [600, 800, 1000, 1200, 1400] #transformar isso em parametro
-n_repeat = 2
+loads = [600, 800, 1000] #transformar isso em parametro
+n_repeat = 1
 n_total = len(loads)*n_repeat
 simu = 1
 
