@@ -1,1 +1,14 @@
 .idea/
+.env/
+
+#python
+__pycache__/
+*.prof
+
+# Dados temporários/gerados
+needs_profiling.prof
+parameters.json
+
+# Sistema
+*.DS_Store
+Thumbs.db
