@@ -1,5 +1,5 @@
 {
-    "n_connections": 100000,
+    "n_connections": 1000,
     "n_simulations": 1,
     "slot_size": 27.5,
     "n_cores": 7,
