@@ -6,7 +6,7 @@ from core.simulation import Simulation
 
 # Configuração do caminho relativo
 base_dir = os.path.dirname(os.path.abspath(__file__))
-params_path = os.path.join(base_dir, 'data', 'parameters.json')
+params_path = os.path.join(base_dir, 'parameters.json')
 
 total = pd.DataFrame()
 # loads = [60, 100, 140, 180, 220, 260]

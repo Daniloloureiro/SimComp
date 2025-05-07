@@ -19,20 +19,29 @@ app.include_router(router)
 @app.post("/run_simulation")
 def run_simulation():
     try:
-        # Build an absolute path from this file's directory to 'core/simroel.py'
+        # Build an absolute path from this file's directory to 'simroel.py'
         script_path = os.path.join(
             os.path.dirname(__file__),
-            "core",
             "simroel.py"
         )
+        
+        # Set PYTHONPATH to include the current directory
+        env = os.environ.copy()
+        current_dir = os.path.dirname(__file__)
+        env["PYTHONPATH"] = current_dir
+        
+        print(f"Script path: {script_path}")
+        print(f"PYTHONPATH: {current_dir}")
         
         # Run the script
         # If you need Python 3 specifically, replace "python" with "python3"
         result = subprocess.run(
-            ["python", script_path],
+            ["python3", script_path],  # Changed to python3
             capture_output=True,
             text=True,
-            check=True
+            check=True,
+            env=env,
+            cwd=current_dir  # Added working directory
         )
         
         return {"stdout": result.stdout, "stderr": result.stderr}

@@ -5,7 +5,7 @@
     "n_cores": 7,
     "file_topology": "dt_backbone",
     "bandwidth": 9000,
-    "traffic_lambda": 0.0016666666666666668,
+    "traffic_lambda": 0.001,
     "traffic_refresh": true,
     "traffic_file": true,
     "traffic_conn_types": [

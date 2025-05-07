@@ -43,6 +43,50 @@ pip install -r requirements.txt
 python simroel.py
 ```
 
+### 5. Configuração com pyenv (Recomendado)
+
+Se você estiver usando pyenv para gerenciar versões do Python, siga estas instruções:
+
+1. Instalar Python 3.12 via pyenv:
+```bash
+pyenv install 3.12.10
+```
+
+2. Criar um ambiente virtual para o projeto:
+```bash
+pyenv virtualenv 3.12.10 simroel-env
+```
+
+3. Configurar o ambiente virtual para o projeto:
+```bash
+pyenv local simroel-env
+```
+
+4. Instalar as dependências:
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+#### Como usar o ambiente:
+
+- O ambiente será ativado automaticamente quando você entrar no diretório do projeto
+- Para ativar manualmente o ambiente:
+```bash
+pyenv activate simroel-env
+```
+- Para desativar o ambiente:
+```bash
+pyenv deactivate
+```
+
+#### Verificando a instalação:
+
+Para confirmar que está tudo configurado corretamente, execute:
+```bash
+python --version  # Deve mostrar Python 3.12.x
+which python     # Deve mostrar o caminho do Python no ambiente virtual
+```
 
 ## 🐛 Solução de Problemas
 
