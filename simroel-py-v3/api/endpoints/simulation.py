@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from ..models import ConnectionModel, SimulationsModel, ParamsModel
+from .models import ConnectionModel, SimulationsModel, ParamsModel
 from files.file_manager import FileManager
 
 router = APIRouter()

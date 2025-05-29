@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from ..models import (
+from .models import (
     TrafficLambdaModel, RouteAlgorithmModel, PccHoldingTimeModel,
     GuardBandModel, ConnectionHoldingTimeModel, ModulationModel,
     SpanLengthModel, ConfidenceIntervalModel, ThreadNumberModel,

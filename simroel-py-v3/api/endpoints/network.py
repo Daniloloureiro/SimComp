@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException
-from ..models import (
+from .models import (
     BandwidthModel, NodeLossModel, FiberLossCoefficientModel,
     NoiseFigureModel, CorePitchModel, WavelengthModel,
-    BendingRadiusModel, CouplingCoeffModel, PortIsolationModel
+    BendingRadiusModel, CouplingCoeffModel
 )
 from files.file_manager import FileManager
 
